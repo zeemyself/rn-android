@@ -18,6 +18,7 @@ build:
   stage: build
   image: zeemyself/rn-android
   script:
+    - yarn
     - cd android/
     - chmod +x ./gradlew
     - ./gradlew assembleRelease
