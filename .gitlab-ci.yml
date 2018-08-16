@@ -9,4 +9,5 @@ push:
   stage: push
   script:
     - docker push zeemyself/rn-android
+  when: manual
 
