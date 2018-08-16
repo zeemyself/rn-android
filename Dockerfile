@@ -1,12 +1,5 @@
-#
-# GitLab CI react-native-android v0.1
-#
-# https://hub.docker.com/r/webcuisine/gitlab-ci-react-native-android/
-# https://github.com/cuisines/gitlab-ci-react-native-android
-#
 
 FROM openjdk:8-jdk
-# MAINTAINER Sascha-Matthias Kulawik <sascha@kulawik.de>
 
 RUN echo "Android SDK 27.0.3"
 ENV ANDROID_SDK_TOOLS "24.4.1"

@@ -4,22 +4,25 @@ This Docker image contains react-native and the Android SDK and most common pack
 A `.gitlab-ci.yml` with caching of your project's dependencies would look like this:
 
 ```
-image: webcuisine/gitlab-ci-react-native-android
+image: zeemyself/rn-android
 
 stages:
 - build
 
 cache:
-  key: ${CI_PROJECT_ID}
   paths:
+  - node_modules/
   - android/.gradle/
 
 build:
   stage: build
+  image: zeemyself/rn-android
   script:
-  - yarn
-  - cd android && ./gradlew assembleDebug
+    - cd android/
+    - chmod +x ./gradlew
+    - ./gradlew assembleRelease
   artifacts:
     paths:
-    - android/app/build/outputs/apk/
+      - android/app/build/outputs/apk
+  when: manual
 ```
