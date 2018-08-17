@@ -10,6 +10,8 @@ build:
     - docker build -t zeemyself/rn-android .
 push:
   stage: push
+  before_script:
+    - docker login -u zeemyself -p $DOCKER_TOKEN
   script:
     - docker push zeemyself/rn-android
   when: manual
