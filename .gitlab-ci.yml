@@ -10,14 +10,14 @@ build:
   stage: build
   services:
    - name: docker:dind
-     command: [ "--insecure-registry=registry.hub.docker.com" ]
+     command: ["--insecure-registry=registry.hub.docker.com"]
   script:
     - docker build -t zeemyself/rn-android .
 push:
   stage: push
   before_script:
-    - docker login -u zeemyself -p $DOCKER_TOKEN
+    - docker login -u zeemyself -p $DOCKER_TOKEN registry.hub.docker.com
   script:
-    - docker push zeemyself/rn-android
+    - docker push registry.hub.docker.com/zeemyself/rn-android
   when: manual
 
