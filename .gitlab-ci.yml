@@ -9,7 +9,7 @@ stages:
 build:
   stage: build
   services:
-   - docker:dind
+   - name: docker:dind
      command: [ "--insecure-registry=registry.hub.docker.com" ]
   script:
     - docker build -t zeemyself/rn-android .
