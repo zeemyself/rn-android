@@ -1,9 +1,11 @@
-image: docker
+image: docker:stable
 stages:
   - build
   - push
 build:
   stage: build
+  services:
+   - docker:dind
   script:
     - docker build -t zeemyself/rn-android .
 push:
