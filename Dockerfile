@@ -31,6 +31,9 @@ RUN echo "Make sure repositories.cfg exists" && \
     mkdir -p ~/.android/ && \
     touch ~/.android/repositories.cfg
 
+RUN echo "Repos list" && \
+    /sdk-tools-linux/tools/bin/sdkmanager --list
+
 RUN echo "Install SDK" \
     && yes | /sdk-tools-linux/tools/bin/sdkmanager "platforms;android-26" "platforms;android-27" \
     && yes | /sdk-tools-linux/tools/bin/sdkmanager "platform-tools" \
