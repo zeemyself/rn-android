@@ -4,7 +4,7 @@ FROM openjdk:8-jdk
 RUN echo "Android SDK 28.0.3"
 ENV ANDROID_SDK_TOOLS "26.1.1"
 
-ENV ANDROID_HOME "/android-sdk-linux"
+ENV ANDROID_HOME "/sdk-tools-linux"
 ENV PATH "$PATH:${ANDROID_HOME}/tools"
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -25,12 +25,12 @@ RUN echo "Download Android SDK" \
     && unzip sdk-tools-linux.zip \
     && rm sdk-tools-linux.zip
 
-RUN echo "Print sdkmanager version" && /android-sdk-linux/tools/bin/sdkmanager --version
+RUN echo "Print sdkmanager version" && /sdk-tools-linux/tools/bin/sdkmanager --version
 
 RUN echo "Install SDK" \
-    && yes | /android-sdk-linux/tools/bin/sdkmanager platforms;android-26,platforms;android-27 \
-    && yes | /android-sdk-linux/tools/bin/sdkmanager platform-tools \
-    && yes | /android-sdk-linux/tools/bin/sdkmanager build-tools-28.0.3 
+    && yes | /sdk-tools-linux/tools/bin/sdkmanager platforms;android-26,platforms;android-27 \
+    && yes | /sdk-tools-linux/tools/bin/sdkmanager platform-tools \
+    && yes | /sdk-tools-linux/tools/bin/sdkmanager build-tools-28.0.3 
     # && echo y | /android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-android-m2repository \
     # && echo y | /android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-google-google_play_services \
     # && echo y | /android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-google-m2repository
