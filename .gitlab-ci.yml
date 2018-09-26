@@ -5,22 +5,11 @@ variables:
 
 stages:
   - build
-  - push
 build:
   stage: build
   services:
    - name: docker:dind
-     command: ["--insecure-registry=registry.hub.docker.com"]
   script:
-    - docker build -t zeemyself/rn-android .
-  artifacts:
-    paths:
-      - /var/lib/docker
-push:
-  stage: push
-  before_script:
-    - docker login -u zeemyself -p $DOCKER_TOKEN registry.hub.docker.com
-  script:
-    - docker push registry.hub.docker.com/zeemyself/rn-android
-  when: manual
+    - docker build -t registry.wndv.co/rn-android .
+    - docker push registry.wndv.co/rn-android
 
