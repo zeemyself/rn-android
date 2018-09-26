@@ -21,7 +21,7 @@ RUN rm -f /etc/ssl/certs/java/cacerts; \
     /var/lib/dpkg/info/ca-certificates-java.postinst configure
 
 RUN echo "Download Android SDK" \
-    && wget -q http://dl.google.com/android/repository/sdk-tools-linux-4333796.zip -O sdk-tools-linux.zip \ \
+    && wget -q http://dl.google.com/android/repository/sdk-tools-linux-4333796.zip -O sdk-tools-linux.zip \
     && unzip sdk-tools-linux.zip \
     && rm sdk-tools-linux.zip
 
