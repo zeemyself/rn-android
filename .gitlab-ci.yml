@@ -12,7 +12,10 @@ build:
    - name: docker:dind
      command: ["--insecure-registry=registry.hub.docker.com"]
   script:
-    - docker build -t zeemyself/rn-android . -o .
+    - docker build -t zeemyself/rn-android .
+  artifacts:
+    paths:
+      - /var/lib/docker
 push:
   stage: push
   before_script:
