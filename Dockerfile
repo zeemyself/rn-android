@@ -37,7 +37,7 @@ RUN echo "Repos list" && \
 RUN echo "Install SDK" \
     && yes | /sdk-tools-linux/tools/bin/sdkmanager "platforms;android-26" "platforms;android-27" \
     && yes | /sdk-tools-linux/tools/bin/sdkmanager "platform-tools" \
-    && yes | /sdk-tools-linux/tools/bin/sdkmanager "build-tools-28.0.3"
+    && yes | /sdk-tools-linux/tools/bin/sdkmanager "build-tools;28.0.3"
     # && echo y | /android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-android-m2repository \
     # && echo y | /android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-google-google_play_services \
     # && echo y | /android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-google-m2repository
