@@ -22,7 +22,7 @@ RUN rm -f /etc/ssl/certs/java/cacerts; \
 
 RUN echo "Download Android SDK" \
     && wget -q http://dl.google.com/android/repository/sdk-tools-linux-4333796.zip -O sdk-tools-linux.zip \
-    && unzip sdk-tools-linux.zip -d sdk-tools-linux -q \
+    && unzip -q sdk-tools-linux.zip -d sdk-tools-linux \
     && rm sdk-tools-linux.zip
 
 RUN echo "Print sdkmanager version" && /sdk-tools-linux/tools/bin/sdkmanager --version
