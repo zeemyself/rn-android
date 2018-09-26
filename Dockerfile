@@ -1,8 +1,8 @@
 
 FROM openjdk:8-jdk
 
-RUN echo "Android SDK 27.0.3"
-ENV ANDROID_SDK_TOOLS "24.4.1"
+RUN echo "Android SDK 28.0.3"
+ENV ANDROID_SDK_TOOLS "26.1.1"
 
 ENV ANDROID_HOME "/android-sdk-linux"
 ENV PATH "$PATH:${ANDROID_HOME}/tools"
@@ -21,16 +21,18 @@ RUN rm -f /etc/ssl/certs/java/cacerts; \
     /var/lib/dpkg/info/ca-certificates-java.postinst configure
 
 RUN echo "Download Android SDK" \
-    && wget --quiet --output-document=android-sdk.tgz https://dl.google.com/android/android-sdk_r${ANDROID_SDK_TOOLS}-linux.tgz \
+    && wget --quiet --output-document=android-sdk.tgz http://dl.google.com/android/repository/sdk-tools-linux-4333796.zip \
     && tar -zvxf android-sdk.tgz -C /
 
+RUN echo "Print sdkmanager version" && /android-sdk-linux/tools/bin/sdkmanager --version
+
 RUN echo "Install SDK" \
-    && echo y | /android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter android-${ANDROID_COMPILE_SDK},android-26 \
-    && echo y | /android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter platform-tools \
-    && echo y | /android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter build-tools-27.0.3,build-tools-26.0.2,build-tools-28.0.2 \
-    && echo y | /android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-android-m2repository \
-    && echo y | /android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-google-google_play_services \
-    && echo y | /android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-google-m2repository
+    && yes | /android-sdk-linux/tools/bin/sdkmanager platforms;android-26,platforms;android-27 \
+    && yes | /android-sdk-linux/tools/bin/sdkmanager platform-tools \
+    && yes | /android-sdk-linux/tools/bin/sdkmanager build-tools-28.0.3 
+    # && echo y | /android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-android-m2repository \
+    # && echo y | /android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-google-google_play_services \
+    # && echo y | /android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-google-m2repository
 
 
 
