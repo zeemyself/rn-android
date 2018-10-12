@@ -89,7 +89,7 @@ RUN echo "Installing Gradle" \
 RUN echo "Install google drive" \
     && mkdir gdrive \
     && cd gdrive \
-    && curl -fLo "https://docs.google.com/uc?id=0B3X9GlR6EmbnQ0FtZmJJUXEyRTA&export=download" \
+    && curl -fLo gdrive "https://docs.google.com/uc?id=0B3X9GlR6EmbnQ0FtZmJJUXEyRTA&export=download" \
     && chmod +x gdrive \
     && echo 4/dADusQpoBy0uE7XUcG1jJKH8tg7w7S0sprrEoK7uf3f7LFG5u_zdEnE | ./gdrive about
 
