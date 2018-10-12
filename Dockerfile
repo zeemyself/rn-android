@@ -15,6 +15,7 @@ RUN apt-get -qq update && \
       unzip \
       lib32stdc++6 \
       lib32z1 \
+      git \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN rm -f /etc/ssl/certs/java/cacerts; \
@@ -84,3 +85,12 @@ RUN echo "Installing Gradle" \
 	&& rm gradle.zip \
 	&& mv "gradle-${GRADLE_VERSION}" "${GRADLE_HOME}/" \
 	&& ln --symbolic "${GRADLE_HOME}/bin/gradle" /usr/bin/gradle
+
+RUN echo "Install google drive" \
+    && mkdir gdrive \
+    && cd gdrive \
+    && curl -fLo "https://docs.google.com/uc?id=0B3X9GlR6EmbnQ0FtZmJJUXEyRTA&export=download" \
+    && chmod +x gdrive \
+    && echo 4/dADusQpoBy0uE7XUcG1jJKH8tg7w7S0sprrEoK7uf3f7LFG5u_zdEnE | ./gdrive about
+
+ENV PATH "$PATH:~/gdrive"
