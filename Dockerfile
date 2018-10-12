@@ -91,6 +91,6 @@ RUN echo "Install google drive" \
     && cd gdrive \
     && curl -fLo gdrive "https://docs.google.com/uc?id=0B3X9GlR6EmbnQ0FtZmJJUXEyRTA&export=download" \
     && chmod +x gdrive \
-    && echo 4/dADusQpoBy0uE7XUcG1jJKH8tg7w7S0sprrEoK7uf3f7LFG5u_zdEnE | ./gdrive about
+    && echo 4/dgBxwseyEmxL3xPoHL5sxPfRnTLhXrwqD_W-DcwE0n_x4HBxc3O30z4 | ./gdrive about
 
 ENV PATH "$PATH:/gdrive"
