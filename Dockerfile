@@ -93,4 +93,4 @@ RUN echo "Install google drive" \
     && chmod +x gdrive \
     && echo 4/dADusQpoBy0uE7XUcG1jJKH8tg7w7S0sprrEoK7uf3f7LFG5u_zdEnE | ./gdrive about
 
-ENV PATH "$PATH:~/gdrive"
+ENV PATH "$PATH:/gdrive"
