@@ -39,28 +39,6 @@ RUN echo "Install SDK" \
     && yes | /sdk-tools-linux/tools/bin/sdkmanager "platforms;android-26" "platforms;android-27" \
     && yes | /sdk-tools-linux/tools/bin/sdkmanager "platform-tools" \
     && yes | /sdk-tools-linux/tools/bin/sdkmanager "build-tools;28.0.3"
-    # && echo y | /android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-android-m2repository \
-    # && echo y | /android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-google-google_play_services \
-    # && echo y | /android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-google-m2repository
-
-
-
-
-# RUN curl -s https://dl.google.com/android/repository/sdk-tools-linux-${VERSION_SDK_TOOLS}.zip > /sdk.zip && \
-#     unzip /sdk.zip -d /sdk && \
-#     rm -v /sdk.zip
-
-# RUN mkdir -p $ANDROID_HOME/licenses/ \
-#   && echo "8933bad161af4178b1185d1a37fbf41ea5269c55\nd56f5187479451eabf01fb78af6dfcb131a6481e" > $ANDROID_HOME/licenses/android-sdk-license \
-#   && echo "84831b9409646a918e30573bab4c9c91346d8abd" > $ANDROID_HOME/licenses/android-sdk-preview-license
-
-# ADD packages.txt /sdk
-# RUN mkdir -p /root/.android && \
-#   touch /root/.android/repositories.cfg && \
-#   ${ANDROID_HOME}/tools/bin/sdkmanager --update 
-
-# RUN while read -r package; do PACKAGES="${PACKAGES}${package} "; done < /sdk/packages.txt && \
-#     ${ANDROID_HOME}/tools/bin/sdkmanager ${PACKAGES}
 
 RUN echo "Installing Yarn Deb Source" \
 	&& curl -sS http://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
@@ -78,7 +56,7 @@ ENV GRADLE_HOME /opt/gradle
 ENV GRADLE_VERSION 4.4
 
 RUN echo "Downloading Gradle" \
-	&& wget --no-verbose --output-document=gradle.zip "https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip"
+	&& wget --no-verbose --output-document=gradle.zip "https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-all.zip"
 
 RUN echo "Installing Gradle" \
 	&& unzip gradle.zip \
@@ -90,7 +68,6 @@ RUN echo "Install google drive" \
     && mkdir gdrive \
     && cd gdrive \
     && curl -fLo gdrive "https://docs.google.com/uc?id=0B3X9GlR6EmbnQ0FtZmJJUXEyRTA&export=download" \
-    && chmod +x gdrive \
-    && echo 4/dgBxwseyEmxL3xPoHL5sxPfRnTLhXrwqD_W-DcwE0n_x4HBxc3O30z4 | ./gdrive about
+    && chmod +x gdrive
 
 ENV PATH "$PATH:/gdrive"
