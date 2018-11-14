@@ -71,3 +71,6 @@ RUN echo "Install google drive" \
     && chmod +x gdrive
 
 ENV PATH "$PATH:/gdrive"
+
+ENV TZ=Asia/Bangkok
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
