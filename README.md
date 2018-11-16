@@ -1,7 +1,7 @@
-# gitlab-ci-react-native-android
-This Docker image contains react-native and the Android SDK and most common packages necessary for building Android apps in a CI tool like GitLab CI. 
+# rn-android
+Docker image for build android APK from gitlabci
 
-A `.gitlab-ci.yml` with caching of your project's dependencies would look like this:
+Example of  `.gitlab-ci.yml`
 
 ```
 image: zeemyself/rn-android
